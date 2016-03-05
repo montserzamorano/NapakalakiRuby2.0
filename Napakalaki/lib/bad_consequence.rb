@@ -7,57 +7,40 @@ class BadConsequence
   
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures,
   someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-    if (someSpecificVisibleTreasures.empty?) && (someSpecificHiddenTreasures.empty?)
-      if (someLevels == 0) && (someVisibleTreasures == 0) &&
-      (someHiddenTreasures == 0)
-        BadConsequence.newDeath(aText)
-      else
-        BadConsequence.newLevelNumberOfTreasures(aText, someLevels,
-        someVisibleTreasures, someHiddenTreasures)
-      end
-    else
-      BadConsequence.newLevelSpecificTreasures(aText, someLevels,
-      someSpecificVisibleTreasures, someSpecificHiddenTreasures)
-    end
-  end
-  #Contructores
-  def BadConsequence.newLevelNumberOfTreasures(text, levels, nVisible, nHidden)
-    @text = text
-    @levels = levels
-    @nVisibleTreasures = nVisible
-    @nHiddenTreasures = nHidden
-    @specificVisibleTreasures = Array.new
-    @specificHiddenTreasures = Array.new
-  end
-  
-  def BadConsequence.newDeath(text)
-    @text = text
-    @levels = 10
-    @nVisibleTreasures = 10
-    @nHiddenTreasures = 10
-    @specificVisibleTreasures = Array.new
-    @specificHiddenTreasures = Array.new
-  end
-  
-  def BadConsequence.newLevelSpecificTreasures(text, levels, tVisible, tHidden)
-    @text = text
-    @levels = levels
-    @nVisibleTreasures = 0
-    @nHiddenTreasures = 0
+    @text = aText
+    @levels = someLevels
+    @nVisibleTreasures = someVisibleTreasures
+    @nHiddenTreasures = someHiddenTreasures
     
-    if(tVisible != nil)
-      tVisible.each do |t|
+    @specificVisibleTreasures = Array.new
+    if(!someSpecificVisibleTreasures.nil?)
+      someSpecificVisibleTreasures.each do |t|
         @specificVisibleTreasures << t
       end
     end
     
-    if(tHidden != nil)
-      tHidden.each do |t|
+    @specificHiddenTreasures = Array.new
+    if(!someSpecificHiddenTreasures.nil?)
+      someSpecificHiddenTreasures.each do |t|
         @specificHiddenTreasures << t
       end
     end
   end
-  pritave_class_method :new
+  
+  #Contructores
+  def BadConsequence.newLevelNumberOfTreasures(text, levels, nVisible, nHidden)
+    new(text,levels,nVisible,nHidden,Array.new, Array.new)
+  end
+  
+  def BadConsequence.newDeath(text)
+    new(text,10,10,10, Array.new, Array.new)
+  end
+  
+  def BadConsequence.newLevelSpecificTreasures(text, levels, tVisible, tHidden)
+    new(text,levels,0,0,tVisible,tHidden)
+  end
+  
+  private_class_method :new
   
   def imprimirTesoros(treasures, texto)
     unless treasures.empty?
