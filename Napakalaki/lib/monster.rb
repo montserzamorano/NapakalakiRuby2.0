@@ -14,7 +14,7 @@ class Monster
   
   #to string
   def t_s
-    "CARTA DE MONSTRUO \n Nombre: #{@name}\n Nivel de combate: #{@level}
-    \n Mal rollo: #{@bc} \n Premio: #{@prize}"
+    "\nCARTA DE MONSTRUO \nNombre: #{@name}\nNivel de combate: #{@level}
+\nMal rollo:" + @bc.t_s + "\nPremio: " + @prize.t_s
   end
 end

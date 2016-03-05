@@ -103,7 +103,7 @@ class Cards
     @@monstruos << Monster.new("Familia feliz", 1, bc, p)
     
     #Roboggoth
-    bc = BadConsequence.newLevelSpecificTreasures("La quinta directiva" + 
+    bc = BadConsequence.newLevelSpecificTreasures("La quinta directiva " + 
     "primaria te obliga a perder 2 niveles y un tesoro 2 manos visible.", 2,
     [TreasureKind::BOTHHANDS], Array.new)
     p = Prize.new(2,1)

@@ -53,7 +53,7 @@ class BadConsequence
           texto << "\tDos manos\n" 
         elsif(treasure == TreasureKind::HELMET)
           texto << "\tCasco\n"  
-        elsif(treasure == TreasureKind::SHOE)
+        elsif(treasure == TreasureKind::SHOES)
           texto << "\tCalzado\n"  
         end
       end
@@ -62,15 +62,19 @@ class BadConsequence
   
   #to string
   def t_s
-    texto = "#{@text}\n Niveles perdidos: #{@levels}"
+    texto = "#{@text}\nNiveles perdidos: #{@levels}"
     if @specificVisibleTreasures.empty? && @specificHiddenTreasures.empty?
-      texto += "\n Tesoros visibles perdidos: #{@nVisibleTreasures} 
-      \n Tesoros ocultos perdidos: #{@nHiddenTreasures}"
-    else
-      texto += "\n Tesoros visibles especificos: " 
-      imprimirTesoros(@specificVisibleTreasures, texto)
-      texto += "\Tesoros ocultos especificos: " 
-      imprimirTesoros(@specificHiddenTreasures, texto)
+      texto += "\nTesoros visibles perdidos: #{@nVisibleTreasures} 
+      \nTesoros ocultos perdidos: #{@nHiddenTreasures}"
+    elsif !@specificVisibleTreasures.empty? || !@specificHiddenTreasures.empty?
+      if !@specificVisibleTreasures.empty?
+        texto += "\nTesoros visibles especificos: \n" 
+        imprimirTesoros(@specificVisibleTreasures, texto)
+      end
+      if !@specificHiddenTreasures.empty?
+        texto += "\nTesoros ocultos especificos: \n" 
+        imprimirTesoros(@specificHiddenTreasures, texto)
+      end
     end
     texto
   end
