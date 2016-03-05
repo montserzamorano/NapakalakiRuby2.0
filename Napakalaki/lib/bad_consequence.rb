@@ -5,8 +5,23 @@ class BadConsequence
   attr_reader :text, :levels, :nVisibleTreasures, :nHiddenTreasures,
               :specificVisibleTreasures, :specificHiddenTreasures
   
+  def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures,
+  someSpecificVisibleTreasures, someSpecificHiddenTreasures)
+    if (someSpecificVisibleTreasures.empty?) && (someSpecificHiddenTreasures.empty?)
+      if (someLevels == 0) && (someVisibleTreasures == 0) &&
+      (someHiddenTreasures == 0)
+        BadConsequence.newDeath(aText)
+      else
+        BadConsequence.newLevelNumberOfTreasures(aText, someLevels,
+        someVisibleTreasures, someHiddenTreasures)
+      end
+    else
+      BadConsequence.newLevelSpecificTreasures(aText, someLevels,
+      someSpecificVisibleTreasures, someSpecificHiddenTreasures)
+    end
+  end
   #Contructores
-  def initialize(text, levels, nVisible, nHidden)
+  def BadConsequence.newLevelNumberOfTreasures(text, levels, nVisible, nHidden)
     @text = text
     @levels = levels
     @nVisibleTreasures = nVisible
@@ -15,7 +30,7 @@ class BadConsequence
     @specificHiddenTreasures = Array.new
   end
   
-  def initialize(text)
+  def BadConsequence.newDeath(text)
     @text = text
     @levels = 10
     @nVisibleTreasures = 10
@@ -24,7 +39,7 @@ class BadConsequence
     @specificHiddenTreasures = Array.new
   end
   
-  def initialize(text, levels, tVisible, tHidden)
+  def BadConsequence.newLevelSpecificTreasures(text, levels, tVisible, tHidden)
     @text = text
     @levels = levels
     @nVisibleTreasures = 0
@@ -41,6 +56,6 @@ class BadConsequence
         @specificHiddenTreasures << t
       end
     end
-    
   end
+  pritave_class_method :new
 end
