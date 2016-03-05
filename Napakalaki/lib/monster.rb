@@ -9,4 +9,10 @@ class Monster
     @bc = bc
     @prize = prize
   end
+  
+  #to string
+  def t_s
+    "CARTA DE MONSTRUO \n Nombre: #{@name}\n Nivel de combate: #{@level}
+    \n Mall rollo: #{@bc} \n Premio: #{@prize}"
+  end
 end
