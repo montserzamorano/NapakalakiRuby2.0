@@ -54,46 +54,70 @@ class Cards
     @@monstruos << Monster.new("El rey de rosa", 13, bc, p)
    
     #La que redacta en las tinieblas
+    bc = BadConsequence.new("Toses los pulmones y pierdes dos niveles", 2,
+    0,0, Array.new, Array.new)
     p = Prize.new(1,1)
     @@monstruos << Monster.new("La que redacta en las tinieblas", 2, bc, p)
     
     #Los hondos
+    bc = BadConsequence.new("Estos monstruos resultan bastante superficiales " +
+    "aburren mortalmente. Estas muerto.",@@max,@@max,@@max,Array.new, Array.new)
     p = Prize.new(2,1)
     @@monstruos << Monster.new("Los hondos", 8, bc, p)
     
     #Semillas Cthulhu
+    bc = BadConsequence.new("Pierdes 2 niveles y 2 tesoros ocultos", 2, 0,
+    2, Array.new, Array.new)
     p = Prize.new(2,1)
     @@monstruos << Monster.new("Semillas Cthulhu", 4, bc, p)
     
     #Dameargo
+    bc = BadConsequence.new("Te intentas escaquear. Pierdes una mano visible",
+      0,0,0,[TreasureKind::ONEHAND], Array.new)
     p = Prize.new(2,1)
     @@monstruos << Monster.new("Dameargo", 1, bc, p)
     
     #Pollipolipo volante
+    bc = BadConsequence.new("Da mucho asquito. Pierdes 3 niveles", 3, 0,0,
+    Array.new, Array.new)
     p = Prize.new(1,1)
     @@monstruos << Monster.new("Pollipolipo volante", 3, bc, p)
     
     #Yskhtihyssg-Goth
+    bc = BadConsequence.new("No le hace gracia que pronuncien mal su " +
+    "nombre. Estas muerto.",@@max, @@max, @@max, Array.new, Array.new)
     p = Prize.new(3,1)
     @@monstruos << Monster.new("Yskhtihyssg-Goth", 12, bc, p)
     
     #Familia feliz
+    bc = BadConsequence.new("La familia te atrapa. Estás muerto.", @@max,
+    @@max, @@max, Array.new, Array.new)
     p = Prize.new(4,1)
     @@monstruos << Monster.new("Familia feliz", 1, bc, p)
     
     #Roboggoth
+    bc = BadConsequence("La quinta directiva primaria te obliga a perder" +
+    " 2 niveles y un tesoro 2 manos visible.", 2,0,0,[TreasureKind::BOTHHANDS],
+    Array.new)
     p = Prize.new(2,1)
     @@monstruos << Monster.new("Roboggoth", 8, bc, p)
     
     #El espia
+    bc = BadConsequence("Te asusta en la noche. Pierdes un casco visible.",
+      0,0,0, [TreasureKind::HELMET], Array.new)
     p = Prize.new(1,1)
     @@monstruos << Monster.new("El espia", 5, bc, p)
     
     #El lenguas
+    bc = BadConsequence("Menudo susto te llevas. Pierdes 2 niveles y 5" +
+      " tesoros visibles.",2,5,0, Array.new, Array.new)
     p = Prize.new(1,1)
     @@monstruos << Monster.new("El lenguas", 20, bc, p)
     
     #Bicefalo
+    bc = BadConsequence("Te faltan manos para tanta cabeza. Pierdes 3 " +
+      "niveles y tus tesoros visibles de las manos", 3,
+    [TreasureKind::ONEHAND],[TreasureKind::ONEHAND],[TreasureKind::BOTHHANDS])
     p = Prize.new(1,1)
     @@monstruos << Monster.new("Bicefalo", 20, bc, p)
   end
