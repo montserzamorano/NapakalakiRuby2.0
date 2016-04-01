@@ -1,6 +1,8 @@
 # encoding: UTF-8
 # Autora: Minim
 
+module NapakalakiGame
+
 class CardDealer
   def initialize   
   end
@@ -54,4 +56,6 @@ class CardDealer
   def initCards
   end
   
+end
+
 end

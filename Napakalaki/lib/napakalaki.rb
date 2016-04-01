@@ -1,6 +1,8 @@
 # encoding: UTF-8
 # Autora: Minim
 
+module NapakalakiGame
+
 class Napakalaki
   
   attr_reader :currentPlayer, :currentMonster
@@ -63,4 +65,6 @@ class Napakalaki
   def endOfGame
   end
   
+end
+
 end

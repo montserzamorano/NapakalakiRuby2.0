@@ -6,6 +6,8 @@ require_relative 'treasure_kind.rb'
 require_relative 'prize.rb'
 require_relative 'bad_consequence.rb'
 
+module NapakalakiGame
+
 class Cards
   @@max = 10
   def self.newMonsters
@@ -133,4 +135,49 @@ class Cards
   def self.monstruos
     @@monstruos
   end
+  
+  def self.newTreasures
+    @@treasures = Array.new
+    
+    @@treasures << Treasures.new("¡Si,mi amo!",4, TreasureKind::HELMET)
+    @@treasures << Treasures.new("Botas de investigacion",3, TreasureKind::SHOES)
+    @@treasures << Treasures.new("Capucha de Cthulhu",3, TreasureKind::HELMET)
+    @@treasures << Treasures.new("A prueba de babas",2, TreasureKind::ARMOR)
+    @@treasures << Treasures.new("Botas de lluvia acida",1, TreasureKind::BOTHHANDS)
+    @@treasures << Treasures.new("Casco minero",2, TreasureKind::HELMET)
+    @@treasures << Treasures.new("Ametralladora Thompson",4, TreasureKind::BOTHHANDS)
+    @@treasures << Treasures.new("Camiseta de la UGR",1, TreasureKind::ARMOR)
+    @@treasures << Treasures.new("Clavo de rail ferroviario",3, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("Cuchillo de sushi arcano",2, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("Fez alopodo",3, TreasureKind::HELMET)
+    @@treasures << Treasures.new("Hacha prehistorica",2, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("El aparato del Pr. Tesla",4, TreasureKind::ARMOR)
+    @@treasures << Treasures.new("Gaita",4, TreasureKind::BOTHHANDS)
+    @@treasures << Treasures.new("Insecticida",2, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("Escopeta de tres cañones",4, TreasureKind::BOTHHANDS)
+    @@treasures << Treasures.new("Garabato mistico",2, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("La rebeca metalica",3, TreasureKind::ARMOR)
+    @@treasures << Treasures.new("Lanzallamas",4, TreasureKind::BOTHHANDS)
+    @@treasures << Treasures.new("Necro-comicon",1, TreasureKind::ONEHAND)   
+    @@treasures << Treasures.new("Necronomicon",5, TreasureKind::BOTHHANDS)
+    @@treasures << Treasures.new("Linterna a dos manos",3, TreasureKind::BOTHHANDS)
+    @@treasures << Treasures.new("Necro-gnomico",2, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("Necrotelecom",2, TreasureKind::HELMET)
+    @@treasures << Treasures.new("Mazo de los antiguos",3, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("Necro-playboycon",3, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("Porra preternatural",2, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("Shogulador",1, TreasureKind::BOTHHANDS)
+    @@treasures << Treasures.new("Varita de atizamiento",3, TreasureKind::ONEHAND)
+    @@treasures << Treasures.new("Tentaculo de pega",2, TreasureKind::HELMET)
+    @@treasures << Treasures.new("Zapato deja-amigos",1, TreasureKind::SHOES)
+    
+    
+  end
+  
+  def self.treasures
+    @@treasures
+  end
+  
+end 
+  
 end

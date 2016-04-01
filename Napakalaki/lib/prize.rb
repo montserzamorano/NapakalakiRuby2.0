@@ -1,6 +1,8 @@
 # encoding: UTF-8
 # Autora: Minim
 
+module NapakalakiGame
+
 class Prize
   #Consultores
   attr_reader :treasures, :levels
@@ -15,4 +17,6 @@ class Prize
   def t_s
     "Tesoros ganados: #{@treasures}\n Niveles ganados: #{@levels}"
   end
+end
+
 end

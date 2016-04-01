@@ -1,6 +1,8 @@
 # encoding: UTF-8
 # Autora: Minim
 
+module NapakalakiGame
+
 class Player
   
   attr_reader :name, :level, :dead, :hiddenTreasures, :visibleTreasures 
@@ -71,4 +73,6 @@ class Player
   def discardAllTreasures
   end
   
+end
+
 end

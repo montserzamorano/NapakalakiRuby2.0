@@ -1,6 +1,8 @@
 # encoding: UTF-8
 # Autora: Minim
 
+module NapakalakiGame
+
 class BadConsequence
   attr_reader :text, :levels, :nVisibleTreasures, :nHiddenTreasures,
               :specificVisibleTreasures, :specificHiddenTreasures
@@ -110,4 +112,6 @@ class BadConsequence
     texto
   end
   
+end
+
 end

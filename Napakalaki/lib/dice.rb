@@ -1,6 +1,8 @@
 # encoding: UTF-8
 # Autora: Minim
 
+module NapakalakiGame
+
 class Dice
   def initialize 
   end
@@ -24,4 +26,6 @@ class Dice
   def nextNumber
   end
   
+end
+
 end

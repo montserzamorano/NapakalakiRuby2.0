@@ -1,6 +1,8 @@
 # To # encoding: UTF-8
 # Autora: Minim
 
+module NapakalakiGame
+
 class Treasure
   
   attr_reader :name, :bonus, :type 
@@ -10,4 +12,6 @@ class Treasure
     @bonus = bonus
     @type = t
   end
+end
+
 end
