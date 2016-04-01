@@ -2,8 +2,7 @@
 # Autora: Minim
 
 class Dice
-  def initialize
-    
+  def initialize 
   end
   
   @@instance = nil

@@ -5,6 +5,8 @@ class BadConsequence
   attr_reader :text, :levels, :nVisibleTreasures, :nHiddenTreasures,
               :specificVisibleTreasures, :specificHiddenTreasures
   
+  MAXTREASURES = 10
+  
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures,
   someSpecificVisibleTreasures, someSpecificHiddenTreasures)
     @text = aText

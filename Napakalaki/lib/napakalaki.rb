@@ -3,6 +3,8 @@
 
 class Napakalaki
   
+  attr_reader :currentPlayer, :currentMonster
+  
   @@instance = nil
   
   def initialize
