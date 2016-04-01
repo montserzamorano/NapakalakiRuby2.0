@@ -60,6 +60,35 @@ class BadConsequence
     end # Fin de unless
   end
   
+  public
+  
+  def isEmpty
+  end
+  
+  def getLevels
+  end
+  
+  def getNVisibleTreasures
+  end
+  
+  def getNHiddenTreasures
+  end
+  
+  def getSpecificHiddenTreasures
+  end
+  
+  def getSpecificVisibleTreasures
+  end
+  
+  def substractVisibleTreasure(t)
+  end
+  
+  def substractHiddenTreasure(t)
+  end
+  
+  def adjustToFitTreasureLists(v,h)
+  end
+  
   #to string
   def t_s
     texto = "#{@text}\nNiveles perdidos: #{@levels}"

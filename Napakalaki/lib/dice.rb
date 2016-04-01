@@ -1,6 +1,5 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# encoding: UTF-8
+# Autora: Minim
 
 class Dice
   def initialize
@@ -9,9 +8,10 @@ class Dice
   
   @@instance = nil
   
-  def initialize
-    
+  def initialize 
   end
+  
+  public
   
   def self.instance
     if(@@instance==nil)
@@ -21,5 +21,8 @@ class Dice
   end
 
   private_class_method :new
+  
+  def nextNumber
+  end
   
 end

@@ -4,11 +4,11 @@ require_relative 'prize.rb'
 require_relative 'bad_consequence.rb'
 
 class Monster
-  attr_reader :name, :combatLevel, :prize, :bc
+  attr_reader :name, :combatLevel, :prize, :badConsequence
   def initialize(name, level, bc, prize)
     @name = name
     @level = level
-    @bc = bc
+    @badConsequence = bc
     @prize = prize
   end
   

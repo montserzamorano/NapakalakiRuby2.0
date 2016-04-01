@@ -1,16 +1,17 @@
-# To change this license header, choose License Headers in Project Properties.
-# To change this template file, choose Tools | Templates
-# and open the template in the editor.
+# encoding: UTF-8
+# Autora: Minim
 
 class CardDealer
-  def initialize
-    
+  def initialize   
   end
   
   @@instance = nil
   
   def initialize
-    
+    @unusedMonsters = Array.new
+    @usedMonsters = Array.new
+    @unusedTreasures = Array.new
+    @usedTreasures = Array.new
   end
   
   def self.instance
@@ -21,5 +22,36 @@ class CardDealer
   end
 
   private_class_method :new
+  
+  private
+  
+  def initTreasureCardDeck
+  end
+  
+  def initMonsterCardDeck
+  end
+  
+  def shuffleTreasures
+  end
+  
+  def shuffleMonsters
+  end
+  
+  public
+  
+  def nextTreasure
+  end
+  
+  def nextMonster
+  end
+  
+  def giveTreasureBack
+  end
+  
+  def giveMonsterBack
+  end
+  
+  def initCards
+  end
   
 end
