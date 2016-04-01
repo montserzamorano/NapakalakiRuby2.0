@@ -5,9 +5,9 @@ module NapakalakiGame
 
 class Player
   
-  attr_reader :name, :level, :dead, :hiddenTreasures, :visibleTreasures 
+  attr_reader :name, :level, :dead, :hiddenTreasures, :visibleTreasures, :MAXLEVEL 
   
-  MAXLEVEL=10
+  @@MAXLEVEL=10
   
   def initialize(name)
     @dead = true
@@ -21,15 +21,23 @@ class Player
   private
   
   def bringToLife
+    @dead = false
+    @level = 1
   end
   
   def incrementLevels(l)
+    @level += l
   end
   
   def decrementLevels(l)
+    @level -= l
+    if(level < 1)
+      @level = 1
+    end
   end
   
   def setPendingBadConsequence(b)
+    @pendingBadConsequence.copiar(b)
   end
   
   def applyPrize(m)
@@ -42,12 +50,23 @@ class Player
   end
   
   def howManyVisibleTreasures(tKind)
+    contador=0
+    @visibleTreasures.each do |v|
+      if(v.type == tKind)
+        contador+=1
+      end
+    end
+    contador
   end
   
   def dieIfNoTreasures
+    if(@hiddenTreasures.size == 0 && @visibleTreasures.size == 0)
+      @dead = true
+    end
   end
   
   def isDead
+    @dead
   end
   
   public
@@ -65,6 +84,11 @@ class Player
   end
   
   def validState
+     if(@pendingBadConsequence.isEmpty && @hiddenTreasures.size < 4)
+       true
+     else
+       false
+     end
   end
   
   def initTreasures

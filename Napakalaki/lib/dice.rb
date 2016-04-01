@@ -24,6 +24,8 @@ class Dice
   private_class_method :new
   
   def nextNumber
+    numAleatorio = rand(6) +1
+    numAleatorio
   end
   
 end

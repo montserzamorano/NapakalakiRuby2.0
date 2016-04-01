@@ -20,6 +20,15 @@ class Monster
     "\nCARTA DE MONSTRUO \nNombre: #{@name}\nNivel de combate: #{@level}
 \nMal rollo:" + @badConsequence.t_s + "\nPremio: " + @prize.t_s
   end
+  
+  def getLevelsGained
+    @prize.levels
+  end
+  
+  def getTreasuresGained
+    @prize.treasures
+  end
+  
 end
 
 end

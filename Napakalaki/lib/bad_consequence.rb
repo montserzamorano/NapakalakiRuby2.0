@@ -5,9 +5,9 @@ module NapakalakiGame
 
 class BadConsequence
   attr_reader :text, :levels, :nVisibleTreasures, :nHiddenTreasures,
-              :specificVisibleTreasures, :specificHiddenTreasures
+              :specificVisibleTreasures, :specificHiddenTreasures, :MAXTREASURES
   
-  MAXTREASURES = 10
+  @@MAXTREASURES = 10
   
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures,
   someSpecificVisibleTreasures, someSpecificHiddenTreasures)
@@ -37,7 +37,7 @@ class BadConsequence
   end
   
   def BadConsequence.newDeath(text)
-    new(text,10,10,10, Array.new, Array.new)
+    new(text,Player.MAXLEVELS,MAXTREASURES,MAXTREASUES, Array.new, Array.new)
   end
   
   def BadConsequence.newLevelSpecificTreasures(text, levels, tVisible, tHidden)
@@ -66,7 +66,27 @@ class BadConsequence
   
   public
   
+  def copiar(b)
+    @text = ""
+    @levels = b.levels
+    @nVisibleTreasures = b.nVisibleTreasures
+    @nHiddenTreasures = b.nHiddenTreasures
+    b.specificVisibleTreasures.each do |t|
+      @specificVisibleTreasures << t
+    end
+    b.specificHiddenTreasures.each do |t|
+      @specificHiddenTreasures << t
+    end
+    
+  end
+  
   def isEmpty
+    if(@nVisibleTreasures==0 && @nHiddenTreasures == 0 && 
+          @specificVisibleTreasures.size == 0 && @specificHiddenTreasures.size == 0)
+      true
+    else
+      false
+    end
   end
   
   def getLevels

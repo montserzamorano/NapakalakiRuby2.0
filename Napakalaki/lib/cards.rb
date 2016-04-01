@@ -5,11 +5,12 @@ require_relative 'monster.rb'
 require_relative 'treasure_kind.rb'
 require_relative 'prize.rb'
 require_relative 'bad_consequence.rb'
+require_relative 'treasure.rb'
 
 module NapakalakiGame
 
 class Cards
-  @@max = 10
+  @@max = BadConsequence.MAXTREASURES
   def self.newMonsters
     @@monstruos = Array.new
     #3 byakhees de bonanza
