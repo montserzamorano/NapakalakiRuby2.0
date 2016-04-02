@@ -64,18 +64,20 @@ puts t.type
 # array= Array.new
 # array << TreasureKind::ONEHAND
 #
-# bc1 = BadConsequence.newDeath("muerte")
-# bc2 = BadConsequence.newLevelNumberOfTreasures("num",1,1,1)
-# bc3 = BadConsequence.newLevelSpecificTreasures("esp",1,[TreasureKind::ONEHAND,TreasureKind::ONEHAND],Array.new)
-# bc4 = BadConsequence.newLevelNumberOfTreasures("vacio",0,0,0)
+ bc1 = BadConsequence.newDeath("muerte")
+ bc2 = BadConsequence.newLevelNumberOfTreasures("num",1,1,1)
+ bc3 = BadConsequence.newLevelSpecificTreasures("esp",1,[TreasureKind::ONEHAND,TreasureKind::ONEHAND],Array.new)
+ bc4 = BadConsequence.newLevelNumberOfTreasures("vacio",0,0,0)
+ bc5 = BadConsequence.newLevelSpecificTreasures("vacio2",0,Array.new,Array.new)
 # 
-# puts bc1.t_s
-# puts bc2.t_s
-# puts bc3.t_s
-# puts bc4.t_s
-#
-# puts bc3.isEmpty
-# puts bc4.isEmpty
+ puts bc1.t_s
+ puts bc2.t_s
+ puts bc3.t_s
+ puts bc4.t_s
+
+ puts bc3.isEmpty
+ puts bc4.isEmpty
+ puts bc5.isEmpty
 
 ## PRUEBA PLAYER
 # player = Player.new("p1")
