@@ -1,13 +1,15 @@
 # encoding: UTF-8
 # Autora: Minim
 
+require_relative 'bad_consequence.rb'
+
 module NapakalakiGame
 
 class Player
   
-  attr_reader :name, :level, :dead, :hiddenTreasures, :visibleTreasures, :MAXLEVEL 
+  attr_reader :name, :level, :dead, :hiddenTreasures, :visibleTreasures
   
-  @@MAXLEVEL=10
+  MAXLEVEL=10
   
   def initialize(name)
     @dead = true
@@ -15,10 +17,18 @@ class Player
     @level = 1
     @hiddenTreasures = Array.new
     @visibleTreasures = Array.new
-    @pendingBadConsequence
+    @pendingBadConsequence = BadConsequence.newLevelSpecificTreasures(" ", 0, Array.new, Array.new)
   end
   
   private
+  
+  def getCombatLevel
+    combatLevel=@level
+    @visibleTreasures.each do |v|
+      combatLevel += v.bonus
+    end
+    return combatLevel
+  end
   
   def bringToLife
     @dead = false
@@ -95,6 +105,10 @@ class Player
   end
   
   def discardAllTreasures
+  end
+  
+  def self.MAXLEVELS
+    10
   end
   
 end

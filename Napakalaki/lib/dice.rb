@@ -25,7 +25,7 @@ class Dice
   
   def nextNumber
     numAleatorio = rand(6) +1
-    numAleatorio
+    return numAleatorio
   end
   
 end
