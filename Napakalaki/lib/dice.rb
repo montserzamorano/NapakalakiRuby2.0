@@ -28,6 +28,10 @@ class Dice
     return numAleatorio
   end
   
+  def self.prueba
+    puts "probando"
+  end
+  
 end
 
 end

@@ -37,7 +37,7 @@ class BadConsequence
   end
   
   def BadConsequence.newDeath(text)
-    new(text,Player.MAXLEVELS,@@MAXTREASURES,@@MAXTREASURES, Array.new, Array.new)
+    new(text,Player.MAXLEVEL,@@MAXTREASURES,@@MAXTREASURES, Array.new, Array.new)
   end
   
   def BadConsequence.newLevelSpecificTreasures(text, levels, tVisible, tHidden)

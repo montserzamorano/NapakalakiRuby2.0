@@ -64,6 +64,8 @@ puts t.type
 # array= Array.new
 # array << TreasureKind::ONEHAND
 #
+
+=begin
  bc1 = BadConsequence.newDeath("muerte")
  bc2 = BadConsequence.newLevelNumberOfTreasures("num",1,1,1)
  bc3 = BadConsequence.newLevelSpecificTreasures("esp",1,[TreasureKind::ONEHAND,TreasureKind::ONEHAND],Array.new)
@@ -78,7 +80,7 @@ puts t.type
  puts bc3.isEmpty
  puts bc4.isEmpty
  puts bc5.isEmpty
-
+=end
 ## PRUEBA PLAYER
 # player = Player.new("p1")
 # puts player.validState
@@ -96,6 +98,7 @@ puts t.type
 
 ## PRUEBA NAPAKALAKI
 
+    Dice.prueba
+    
 end
-  
 end

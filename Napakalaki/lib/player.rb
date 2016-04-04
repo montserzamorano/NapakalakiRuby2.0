@@ -107,7 +107,7 @@ class Player
   def discardAllTreasures
   end
   
-  def self.MAXLEVELS
+  def self.MAXLEVEL
     10
   end
   
