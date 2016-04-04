@@ -7,7 +7,7 @@ class BadConsequence
   attr_reader :text, :levels, :nVisibleTreasures, :nHiddenTreasures,
               :specificVisibleTreasures, :specificHiddenTreasures
   
-  MAXTREASURES = 10
+  @@MAXTREASURES = 10
   
   def initialize(aText, someLevels, someVisibleTreasures, someHiddenTreasures,
   someSpecificVisibleTreasures, someSpecificHiddenTreasures)
@@ -37,7 +37,7 @@ class BadConsequence
   end
   
   def BadConsequence.newDeath(text)
-    new(text,Player.MAXLEVELS,MAXTREASURES,MAXTREASURES, Array.new, Array.new)
+    new(text,Player.MAXLEVELS,@@MAXTREASURES,@@MAXTREASURES, Array.new, Array.new)
   end
   
   def BadConsequence.newLevelSpecificTreasures(text, levels, tVisible, tHidden)
