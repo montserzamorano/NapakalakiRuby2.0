@@ -9,7 +9,7 @@ class Player
   
   attr_reader :name, :level, :dead, :hiddenTreasures, :visibleTreasures
   
-  MAXLEVEL=10
+  @@MAXLEVEL=10
   
   def initialize(name)
     @dead = true
