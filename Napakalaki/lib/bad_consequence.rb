@@ -67,7 +67,7 @@ class BadConsequence
   public
   
   def self.MAXTREASURES
-    10
+    @@MAXTREASURES
   end
   
   def copiar(b)

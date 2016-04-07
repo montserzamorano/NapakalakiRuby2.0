@@ -1,6 +1,8 @@
 # encoding: UTF-8
 # Autora: Minim
 
+require_relative 'referee.rb'
+
 module NapakalakiGame
 
 class Napakalaki
@@ -9,7 +11,10 @@ class Napakalaki
   
   @@instance = nil
   
-  def initialize
+  #EXAMEN
+  def initialize(name)
+    @referee = Referee.new(name)
+    #EXAMEN
     @currentPlayerIndex = -1
     @currentPlayer
     @currentMonster

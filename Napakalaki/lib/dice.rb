@@ -9,9 +9,6 @@ class Dice
   
   @@instance = nil
   
-  def initialize 
-  end
-  
   public
   
   def self.instance
@@ -26,10 +23,6 @@ class Dice
   def nextNumber
     numAleatorio = rand(6) +1
     return numAleatorio
-  end
-  
-  def self.prueba
-    puts "probando"
   end
   
 end

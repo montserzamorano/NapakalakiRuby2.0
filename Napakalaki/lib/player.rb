@@ -108,7 +108,7 @@ class Player
   end
   
   def self.MAXLEVEL
-    10
+    @@MAXLEVEL
   end
   
 end

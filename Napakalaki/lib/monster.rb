@@ -7,11 +7,17 @@ module NapakalakiGame
 
 class Monster
   attr_reader :name, :combatLevel, :prize, :badConsequence
+  
+  #EXAMEN
+  @@contadorMonstruos = 0
+  #EXAMEN
+  
   def initialize(name, level, bc, prize)
     @name = name
     @level = level
     @badConsequence = bc
     @prize = prize
+    @@contadorMonstruos += 1
   end
   
   public 
@@ -28,6 +34,12 @@ class Monster
   def getTreasuresGained
     @prize.treasures
   end
+  
+  #EXAMEN
+  def self.getNumberOfMonsters()
+    @@contadorMonstruos
+  end
+  #EXAMEN
   
 end
 

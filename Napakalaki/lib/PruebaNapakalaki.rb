@@ -98,7 +98,5 @@ puts t.type
 
 ## PRUEBA NAPAKALAKI
 
-    Dice.prueba
-    
 end
 end
