@@ -12,8 +12,8 @@ class Napakalaki
   @@instance = nil
   
   #EXAMEN
-  def initialize(name)
-    @referee = Referee.new(name)
+  def initialize
+    #@referee = Referee.new(name)
     #EXAMEN
     @currentPlayerIndex = -1
     @currentPlayer

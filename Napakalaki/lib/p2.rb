@@ -8,7 +8,7 @@ require_relative 'treasure_kind.rb'
 
 module NapakalakiGame
 
-module P2
+#module P2 ESTO NO ESTA BIEN HECHO
   
 class P2
   def initialize
@@ -48,6 +48,6 @@ class P2
   
 end
 
-end
+#end
 
 end
