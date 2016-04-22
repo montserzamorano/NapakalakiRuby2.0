@@ -51,9 +51,35 @@ class CardDealer
   public
   
   def nextTreasure
+    
+      if (@unusedTreasures.empty?)
+        @unusedTreasures = @usedTreasures.clone
+        @usedTreasures.clear
+        
+        shuffleTreasures
+      end
+      
+      t = @unusedTreasures[0]
+      @unusedTreasures.delete_at(0)
+      @usedTreasures << t
+       
+      t
+    
   end
   
   def nextMonster
+      if (@unusedMonsters.empty?)
+        @unusedMonsters = @usedMonsters.clone
+        @usedMonsters.clear
+        
+        shuffleMonsters
+      end
+      
+      m = @unusedMonsters[0]
+      @unusedMonsters.delete_at(0)
+      @usedMonsters << m
+      
+      m
   end
   
   def giveTreasureBack(t)
@@ -67,6 +93,8 @@ class CardDealer
   end
   
   def initCards
+    initTreasureCardDeck
+    initMonsterCardDeck
   end
   
 end

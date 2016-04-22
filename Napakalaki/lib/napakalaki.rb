@@ -1,21 +1,16 @@
 # encoding: UTF-8
 # Autora: Minim
 
-require_relative 'referee.rb'
-
 module NapakalakiGame
 
 class Napakalaki
   
   attr_reader :currentPlayer, :currentMonster
-  
+  @@MAXJUGADORES = 3
   @@instance = nil
   
-  #EXAMEN
   def initialize
-    #@referee = Referee.new(name)
-    #EXAMEN
-    @currentPlayerIndex = -1
+    @currentPlayerIndex = nil
     @currentPlayer
     @currentMonster
     @players = Array.new
@@ -33,41 +28,95 @@ class Napakalaki
   private
   
   def initPlayers(names)
+    if(names.size > @@MAXJUGADORES)
+      puts "Demasiados jugadores"
+    else
+      names.each do |n|
+        @players << n
+      end
+    end
   end
   
   def nextPlayer
+    if(@currentPlayerIndex == nil)
+      @currentPlayerIndex = rand(@players.size)
+    else
+      if(@currentPlayerIndex == @players.size-1)
+        @currentPlayerIndex = 0
+      else
+        @currentPlayerIndex += 1
+      end
+    end
   end
   
   def nextTurnAllowed
+    if(@currentPlayer == nil)
+      return true
+    else
+      return @currentPlayer.validState
+    end
   end
   
   public
   
   def developCombat
+      combatResult = @currentPlayer.combat(@currentMonster)
+      dealer = CardDealer.instance
+      dealer.giveMonsterBack(@currentMonster)
+      combatResult
   end
   
   def discardVisibleTreasures(treasures)
+    @currentPlayer.discardVisibleTreasure(t)
   end
   
   def discardHiddenTreasures(treasures)
+    @currentPlayer.discardHiddenTreasure(t)
   end
   
   def makeTreasuresVisible(treasures)
+    @currentPlayer.makeTreasureVisible(t)
   end
   
   def initGame(players)
+    dealer = CardDealer.instance
+    dealer.initCards
+    initPlayers(players)
+    nextTurn
   end
   
   def getCurrentPlayer
+    @currentPlayer
   end
   
   def getCurrentMonster
+    @currentMonster
   end
   
   def nextTurn
+      stateOK = nextTurnAllowed
+    
+      if(stateOK)
+        dealer = CardDealer.instance
+        @currentMonster = dealer.nextMonster
+        @currentPlayer = nextPlayer
+      
+        dead = @currentPlayer.isDead
+      
+        if(dead)
+          @currentPlayer.initTreasures
+        end
+      end
+    
+    stateOK
   end
   
-  def endOfGame
+  def endOfGame(result)
+    if(result == CombatResult::WINGAME)
+      return true
+    else
+      return false
+    end
   end
   
 end

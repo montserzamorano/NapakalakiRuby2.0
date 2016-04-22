@@ -2,13 +2,11 @@
 # Autora: Minim
 
 #EXAMEN 
-require_relative 'p2.rb'
 
 module NapakalakiGame
 
 class Examen
   def self.main
-    P2::P2.examen
   end
 end
 

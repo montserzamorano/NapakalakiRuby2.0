@@ -109,12 +109,67 @@ class BadConsequence
   end
   
   def substractVisibleTreasure(t)
+    if(!@specificVisibleTreasures.empty?)
+      @specificVisibleTreasures.delete(t.type)
+    else #si en el mal rollo no hay tesoros especificos, se reducen los tesoros visibles
+      if(nVisibleTreasures > 0)
+        @nVisibleTreasures-=1
+      end
+    end
+    #devolver la carta descartada al mazo
+    dealer = CardDealer.instance
+    dealer.giveTreasureBack(t)
   end
   
   def substractHiddenTreasure(t)
+    if(!@specificHiddenTreasures.empty?)
+      @specificHiddenTreasures.delete(t.type)
+    else #si en el mal rollo no hay tesoros especificos, se reducen los tesoros visibles
+      if(nHiddenTreasures > 0)
+        @nHiddenTreasures-=1
+      end
+    end
+    #devolver la carta descartada al mazo
+    dealer = CardDealer.instance
+    dealer.giveTreasureBack(t)
   end
   
   def adjustToFitTreasureLists(v,h)
+     if((@nVisibleTreasures != 0) || (@nHiddenTreasures != 0)) 
+        if(@nVisibleTreasures > v.size)
+          nVisible = v.size
+        else
+          nVisible = @nVisibleTreasures 
+        end
+        
+        if(@nHiddenTreasures > h.size)
+          nHidden = h.size
+        else
+          nHidden = @nHiddenTreasures 
+        end
+         
+        bc = BadConsequenceSpecific.new(@text, @levels, nVisible, nHidden)
+      else 
+        vTreasures = Array.new
+        hTreasures = Array.new
+     
+        @specificVisibleTreasures.each do |visible|
+          if((v.detect {|vis| vis.type == visible}) != nil)
+            vTreasures << visible
+          end
+        end
+      
+        @specificHiddenTreasures.each do |hidden|
+          if((h.detect {|oculto| oculto.type == hidden}) != nil)
+            hTreasures << hidden
+          end
+        end
+      
+        bc = BadConsequenceSpecific.new(@text, @levels, vTreasures, 
+          hTreasures)
+      end
+      
+      bc
   end
   
   #to string
