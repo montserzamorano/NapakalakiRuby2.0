@@ -67,15 +67,24 @@ class Napakalaki
   end
   
   def discardVisibleTreasures(treasures)
-    @currentPlayer.discardVisibleTreasure(t)
+    tesorosTam = treasures.size
+    for i in 0...tesorosTam
+      @currentPlayer.discardVisibleTreasure(treasures[i])
+    end
   end
   
   def discardHiddenTreasures(treasures)
-    @currentPlayer.discardHiddenTreasure(t)
+    tesorosTam = treasures.size
+    for i in 0...tesorosTam
+      @currentPlayer.discardHiddenTreasure(treasures[i])
+    end
   end
   
   def makeTreasuresVisible(treasures)
-    @currentPlayer.makeTreasureVisible(t)
+    nSize = treasures.size
+    for i in 0...nSize
+      @currentPlayer.makeTreasureVisible(treasures[i])
+    end
   end
   
   def initGame(players)
@@ -94,6 +103,7 @@ class Napakalaki
   end
   
   def nextTurn
+    if(@currentPlayer!=nil)
       stateOK = nextTurnAllowed
     
       if(stateOK)
@@ -108,7 +118,8 @@ class Napakalaki
         end
       end
     
-    stateOK
+      stateOK
+    end
   end
   
   def endOfGame(result)

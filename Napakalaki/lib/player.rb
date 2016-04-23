@@ -52,20 +52,23 @@ class Player
   def applyPrize(m)
     nLevels = m.levels
     incrementLevels(nLevels)
-    nPrize = m.treasures
+    nTreasures = m.treasures
     
-    dealer = CardDealer.instance
-    for i in (0...nPrize)
-      treasure = dealer.nextTreasure
-      @hiddenTreasures << treasure
+    if(nTreasures>0)
+      dealer = CardDealer.instance
+      for i in 0...nPrize
+        treasure = dealer.nextTreasure
+        @hiddenTreasures << treasure
+      end
     end
   end
   
   def applyBadConsequence(m)
-      nLevels = m.levels
+      badConsequence = m.clone
+      nLevels = badConsequence.levels
       decrementLevels(nLevels)
     
-      pendingBad = m.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
+      pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
       setPendingBadConsequence(pendingBad) 
   end
   
@@ -117,28 +120,45 @@ class Player
   public
   
   def combat(m)
+    myLevel = @level
+    monsterLevel = m.level
+    if(myLevel>monsterLevel)
+      applyPrize(m)
+      if(myLevel>=@@MAXLEVEL)
+        combatResult=CombatResult::WINGAME
+      else
+        combatResult=CombatResult::WIN
+      end
+    else
+      applyBadConsequence(m)
+      combatResult=CombatResult::LOSE
+    end
+    dealer = CardDealer.instance
+    dealer.giveMonsterBack(m)
+    combatResult
   end
   
   def makeTreasureVisible(t)
-    can = canMakeTreasureVisible(t)
+    canI = canMakeTreasureVisible(t)
       
-    if(can)
+    if(canI)
       @visibleTreasures << t
       @hiddenTreasures.delete(t)
     end
     
-    can
+    canI
   end
   
   def discardVisibleTreasure(t)
     @visibleTreasures.delete(t)
     
+    dealer = CardDealer.instance
+    dealer.giveTreasureBack(t)
+    
     if(@pendingBadConsequence != nil) && (!@pendingBadConsequence.isEmpty)
       @pendingBadConsequence.substractVisibleTreasure(t)
     end
     
-    dealer = CardDealer.instance
-    dealer.giveTreasureBack(t)
     dieIfNoTreasures
   end
   
@@ -163,29 +183,35 @@ class Player
   end
   
   def initTreasures
+    dealer = CardDealer.instance
+    dice = Dice.instance
     bringToLive
     
-    dice = Dice.instance
-    number = dice.nextNumber
+    treasure = dealer.nextNumber
+    @hiddenTreasures << treasure
     
-    dealer = CardDealer.instance
-      
+    dice.nextNumber
     #Obtenciones en el dado (number)
-    if (number == 1)
+    if (number > 1)
       max = 1
-    elsif(number < 6) 
-      max = 2
-    else 
-      max = 3
+      treasure = dealer.nextNumber
+      @hiddenTreasures << treasure
     end
-    
-    for i in (0...max)
-      treasure = dealer.nextTreasure
+    if(number == 6) 
+      treasure = dealer.nextNumber
       @hiddenTreasures << treasure
     end
   end
   
   def discardAllTreasures
+    numVisibles = @visibleTreasures.size
+    numOcultos = @hiddenTreasures.size
+    for i in 0...numVisibles
+      discardVisibleTreasure(@visibleTreasures[i])
+    end
+    for i in 0...numOcultos
+      discardHiddenTreasure(@hiddenTreasures[i])
+    end
   end
   
   def self.MAXLEVEL
