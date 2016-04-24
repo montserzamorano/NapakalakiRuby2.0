@@ -95,6 +95,8 @@ class CardDealer
   def initCards
     initTreasureCardDeck
     initMonsterCardDeck
+    shuffleMonsters
+    shuffleTreasures
   end
   
 end

@@ -4,7 +4,7 @@
 require_relative 'bad_consequence.rb'
 require_relative 'treasure_kind.rb'
 require_relative 'combat_result.rb'
-
+require_relative 'monster.rb'
 
 module NapakalakiGame
 
@@ -53,7 +53,7 @@ class Player
   end
   
   def applyPrize(m)
-    nLevels = m.levels
+    nLevels = m.getLevelsGained
     incrementLevels(nLevels)
     nTreasures = m.treasures
     
@@ -126,7 +126,7 @@ class Player
   def combat(m)
     myLevel = getCombatLevel
     monsterLevel = m.getCombatLevel
-    if(myLevel>10)
+    if(myLevel > monsterLevel)
       applyPrize(m)
       if(myLevel>=@@MAXLEVEL)
         combatResult=CombatResult::WINGAME

@@ -14,7 +14,7 @@ class Monster
   
   def initialize(name, level, bc, prize)
     @name = name
-    @combatlLevel = level
+    @combatLevel = level
     @badConsequence = bc
     @prize = prize
     @@contadorMonstruos += 1
