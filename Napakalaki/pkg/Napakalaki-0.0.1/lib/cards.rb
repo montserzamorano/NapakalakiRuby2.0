@@ -14,7 +14,7 @@ class Cards
   def self.newMonsters
     @@monstruos = Array.new
     #3 byakhees de bonanza
-    bc = BadConsequence.newLevelSpecificTreasures("Pierdes tu armadura visible"+ 
+    bc = BadConsequence.newLevelSpecificTreasures("Pierdes tu armadura visible "+ 
     "y otra oculta", 0,[TreasureKind::ARMOR], [TreasureKind::ARMOR])
     p = Prize.new(2,1)
     @@monstruos << Monster.new("3 byakhees de bonanza", 8, bc, p)

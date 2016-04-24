@@ -14,7 +14,7 @@ class Monster
   
   def initialize(name, level, bc, prize)
     @name = name
-    @level = level
+    @combatlLevel = level
     @badConsequence = bc
     @prize = prize
     @@contadorMonstruos += 1
@@ -22,9 +22,9 @@ class Monster
   
   public 
   #to string
-  def t_s
-    "\nCARTA DE MONSTRUO \nNombre: #{@name}\nNivel de combate: #{@level}
-\nMal rollo:" + @badConsequence.t_s + "\nPremio: " + @prize.t_s
+  def to_s
+    "\nCARTA DE MONSTRUO \nNombre: #{@name}\nNivel de combate: #{@combatLevel}
+\nMal rollo: " + @badConsequence.to_s + "\nPremio: " + @prize.to_s
   end
   
   def getLevelsGained

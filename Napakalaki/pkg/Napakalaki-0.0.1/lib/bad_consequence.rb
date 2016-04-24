@@ -94,18 +94,23 @@ class BadConsequence
   end
   
   def getLevels
+    @levels
   end
   
   def getNVisibleTreasures
+    @nVisibleTreasures
   end
   
   def getNHiddenTreasures
+    @nHiddenTreasures
   end
   
   def getSpecificHiddenTreasures
+    @specificHiddenTreasures
   end
   
   def getSpecificVisibleTreasures
+    @specificVisibleTreasures
   end
   
   def substractVisibleTreasure(t)
@@ -148,7 +153,7 @@ class BadConsequence
           nHidden = @nHiddenTreasures 
         end
          
-        bc = BadConsequenceSpecific.new(@text, @levels, nVisible, nHidden)
+        bc = BadConsequence.newLevelNumberOfTreasures(@text, @levels, nVisible, nHidden)
       else 
         vTreasures = Array.new
         hTreasures = Array.new
@@ -165,7 +170,7 @@ class BadConsequence
           end
         end
       
-        bc = BadConsequenceSpecific.new(@text, @levels, vTreasures, 
+        bc = BadConsequence.newLevelSpecificTreasures(@text, @levels, vTreasures, 
           hTreasures)
       end
       
@@ -173,7 +178,7 @@ class BadConsequence
   end
   
   #to string
-  def t_s
+  def to_s
     texto = "#{@text}\nNiveles perdidos: #{@levels}"
     if @specificVisibleTreasures.empty? && @specificHiddenTreasures.empty?
       texto += "\nTesoros visibles perdidos: #{@nVisibleTreasures} 

@@ -2,6 +2,9 @@
 # Autora: Minim
 
 require_relative 'bad_consequence.rb'
+require_relative 'treasure_kind.rb'
+require_relative 'combat_result.rb'
+
 
 module NapakalakiGame
 
@@ -27,7 +30,7 @@ class Player
     @visibleTreasures.each do |v|
       combatLevel += v.bonus
     end
-    return combatLevel
+    combatLevel
   end
   
   def bringToLife
@@ -64,8 +67,8 @@ class Player
   end
   
   def applyBadConsequence(m)
-      badConsequence = m.clone
-      nLevels = badConsequence.levels
+    badConsequence = (m.getBadConsequence).clone
+      nLevels = badConsequence.getLevels
       decrementLevels(nLevels)
     
       pendingBad = badConsequence.adjustToFitTreasureLists(@visibleTreasures, @hiddenTreasures)
@@ -121,9 +124,9 @@ class Player
   end
   
   def combat(m)
-    myLevel = @level
-    monsterLevel = m.level
-    if(myLevel>monsterLevel)
+    myLevel = getCombatLevel
+    monsterLevel = m.getCombatLevel
+    if(myLevel>10)
       applyPrize(m)
       if(myLevel>=@@MAXLEVEL)
         combatResult=CombatResult::WINGAME
@@ -233,6 +236,11 @@ class Player
   
   def getName
     @name
+  end
+  
+  
+  def to_s
+    "#{@name.to_s}"
   end
   
 end
