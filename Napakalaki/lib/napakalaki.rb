@@ -80,14 +80,14 @@ class Napakalaki
   
   def discardVisibleTreasures(treasures)
     tesorosTam = treasures.size
-    for i in 0...tesorosTam
+    for i in 0..tesorosTam
       @currentPlayer.discardVisibleTreasure(treasures[i])
     end
   end
   
   def discardHiddenTreasures(treasures)
     tesorosTam = treasures.size
-    for i in 0...tesorosTam
+    for i in 0..tesorosTam
       @currentPlayer.discardHiddenTreasure(treasures[i])
     end
   end

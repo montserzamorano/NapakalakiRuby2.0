@@ -47,6 +47,10 @@ class Monster
     @badConsequence
   end
   
+  def getPrize
+    @prize
+  end
+  
   #EXAMEN
   def self.getNumberOfMonsters()
     @@contadorMonstruos

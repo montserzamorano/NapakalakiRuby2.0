@@ -55,7 +55,8 @@ class Player
   def applyPrize(m)
     nLevels = m.getLevelsGained
     incrementLevels(nLevels)
-    nTreasures = m.treasures
+    nTreasures = m.getTreasuresGained
+    nPrize = (m.getPrize).getTreasures
     
     if(nTreasures>0)
       dealer = CardDealer.instance
@@ -168,13 +169,13 @@ class Player
   
   def discardHiddenTreasure(t)
     @hiddenTreasures.delete(t)
+          
+    dealer = CardDealer.instance
+    dealer.giveTreasureBack(t)
     
     if(@pendingBadConsequence != nil) && (!@pendingBadConsequence.isEmpty)
       @pendingBadConsequence.substractHiddenTreasure(t)
     end
-    
-    dealer = CardDealer.instance
-    dealer.giveTreasureBack(t)
     dieIfNoTreasures
   end
   
@@ -207,14 +208,16 @@ class Player
   end
   
   def discardAllTreasures
-    numVisibles = @visibleTreasures.size
-    numOcultos = @hiddenTreasures.size
-    for i in 0...numVisibles
-      discardVisibleTreasure(@visibleTreasures[i])
-    end
-    for i in 0...numOcultos
-      discardHiddenTreasure(@hiddenTreasures[i])
-    end
+    #@visibleTreasures.each do |v|
+    #  discardVisibleTreasure(v)
+    #end
+    #@hiddenTreasures.each do |h|
+    #  discardHiddenTreasure(h)
+    #end
+    @visibleTreasures.clear
+    @hiddenTreasures.clear
+    @pendingBadConsequence.vaciar
+    dieIfNoTreasures
   end
   
   def self.MAXLEVEL

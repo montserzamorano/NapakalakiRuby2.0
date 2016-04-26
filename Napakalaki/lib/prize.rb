@@ -13,6 +13,14 @@ class Prize
     @levels = levels
   end
   
+  def getTreasures
+    @treasures
+  end
+  
+  def getLevels
+    @levels
+  end
+  
   #to string
   def to_s
     "Tesoros ganados: #{@treasures}\n Niveles ganados: #{@levels}"

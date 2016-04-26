@@ -177,6 +177,14 @@ class BadConsequence
       bc
   end
   
+  def vaciar
+    @nVisibleTreasures = 0
+    @nHiddenTreasures = 0
+    @specificHiddenTreasures.clear
+    @specificVisibleTreasures.clear
+    @levels = 0
+  end
+  
   #to string
   def to_s
     texto = "#{@text}\nNiveles perdidos: #{@levels}"
