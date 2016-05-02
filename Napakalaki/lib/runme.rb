@@ -3,15 +3,19 @@
 
 #EXAMEN 
 
+require_relative 'examen.rb'
+
 module NapakalakiGame
 
-class Examen
+class Runme
   def self.main
+    examen = Examen.new
+    examen.run
   end
 end
 
 if $0 == __FILE__
-  Examen.main()
+  Runme.main()
 end
 
 end

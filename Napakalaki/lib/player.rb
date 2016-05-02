@@ -5,6 +5,7 @@ require_relative 'bad_consequence.rb'
 require_relative 'treasure_kind.rb'
 require_relative 'combat_result.rb'
 require_relative 'monster.rb'
+require_relative 'card_dealer.rb'
 
 module NapakalakiGame
 
@@ -23,7 +24,7 @@ class Player
     @pendingBadConsequence = BadConsequence.newLevelSpecificTreasures(" ", 0, Array.new, Array.new)
   end
   
-  private
+  #private
   
   def getCombatLevel
     combatLevel=@level
@@ -32,6 +33,8 @@ class Player
     end
     combatLevel
   end
+  
+  private
   
   def bringToLife
     @dead = false
@@ -208,16 +211,19 @@ class Player
   end
   
   def discardAllTreasures
-    #@visibleTreasures.each do |v|
-    #  discardVisibleTreasure(v)
-    #end
-    #@hiddenTreasures.each do |h|
-    #  discardHiddenTreasure(h)
-    #end
-    @visibleTreasures.clear
-    @hiddenTreasures.clear
-    @pendingBadConsequence.vaciar
-    dieIfNoTreasures
+    c1 = @visibleTreasures.clone
+    c2 = @hiddenTreasures.clone
+    
+    c1.each do |v|
+      discardVisibleTreasure(v)
+    end
+    c2.each do |h|
+      discardHiddenTreasure(h)
+    end
+    #@visibleTreasures.clear
+    #@hiddenTreasures.clear
+    #@pendingBadConsequence.vaciar
+    #dieIfNoTreasures
   end
   
   def self.MAXLEVEL
@@ -233,7 +239,7 @@ class Player
     @visibleTreasures
   end
 
-  def getLeveles
+  def getLevels
     @level
   end
   
@@ -245,6 +251,21 @@ class Player
   def to_s
     "#{@name.to_s}"
   end
+  
+  #EXAMEN
+  
+  def setHiddenTreasures(tesorosOcultos)
+    @hiddenTreasures = tesorosOcultos.clone
+    
+  end
+  
+    def setVisibleTreasures(tesorosVisibles)
+    @visibleTreasures = tesorosVisibles.clone
+    
+  end
+  
+  #EXAMEN
+  
   
 end
 
