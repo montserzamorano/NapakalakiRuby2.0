@@ -59,11 +59,10 @@ class Player
     nLevels = m.getLevelsGained
     incrementLevels(nLevels)
     nTreasures = m.getTreasuresGained
-    nPrize = (m.getPrize).getTreasures
     
     if(nTreasures>0)
       dealer = CardDealer.instance
-      for i in 0...nPrize
+      for i in 0...nTreasures
         treasure = dealer.nextTreasure
         @hiddenTreasures << treasure
       end
