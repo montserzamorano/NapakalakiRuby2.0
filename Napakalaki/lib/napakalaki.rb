@@ -75,7 +75,11 @@ class Napakalaki
       combatResult = @currentPlayer.combat(@currentMonster)
       dealer = CardDealer.instance
       dealer.giveMonsterBack(@currentMonster)
-      combatResult
+      if(combatResult == CombatResult::LOSEANDCONVERT)
+        c = dealer.nextCultist
+        @currentPlayer = CultistPlayer.new(@currentPlayer, c)
+        @players[@currentPlayerIndex] = @currentPlayer
+      end
   end
   
   def discardVisibleTreasures(treasures)

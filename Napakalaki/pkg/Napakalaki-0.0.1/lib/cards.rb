@@ -131,6 +131,51 @@ class Cards
     Array.new)
     p = Prize.new(1,1)
     @@monstruos << Monster.new("Bicefalo", 20, bc, p)
+    
+    ################## SECTARIOS #############################
+    
+    #El mal indecible impronunciable
+    
+    bc = BadConsequence.newLevelSpecificTreasures("Pierdes 1 mano visible", 0, [TreasureKind::ONEHAND], Array.new)
+    p = Prize.new(3, 1)
+    @@monstruos << Monster.new("El mal indecible impronunciable",10,bc,p,-2)
+    
+    # Testigos oculares
+    bc = BadConsequence.newLevelNumberOfTreasures("Pierdes tus tesoros visibles. Jajaja", 0, @@max, 0)
+    p = Prize.new(2,1)
+    @@monstruos << Monster.new("Testigos oculares",6,bc,p,2)
+    
+    # El gran cthulhu
+    
+    bc = BadConsequence.newDeath("Hoy no es tu dia de suerte. Mueres.")
+    p = Prize.new(2,5)
+    @@monstruos << Monster.new("El gran cthulhu",20,bc,p,4)
+    
+    # Serpiente politico
+    
+    bc = BadConsequence.newLevelNumberOfTreasures("Tu gobierno de recorta 2 niveles", 2, 0, 0)
+    p = Prize.new(2,1)
+    @@monstruos << Monster.new("Serpiente politico", 8, bc, p, 4)
+    
+    # Felpuggoth
+    
+    bc = BadConsequence.newLevelSpecificTreasures(
+      "Pierdes tu casco y tu armadura visible. Pierdes tus manos ocultas", 0, 
+      [TreasureKind::HELMET, TreasureKind::ARMOR], 
+      [TreasureKind::ONEHAND, TreasureKind::ONEHAND, TreasureKind::BOTHANDS])
+    p = Prize.new(1,1)
+    @@monstruos << Monster.new("Felpuggoth",2, bc, p, 5)
+    
+    # Shoggoth
+    bc = BadConsequence.newLevelNumberOfTreasures("Pierdes 2 niveles", 2, 
+      0, 0)
+    p = Prize.new(4,2)
+    @@monstruos << Monster.new("Shoggoth", 16, bc, p, -4)
+    # Lolitagooth
+    bc = BadConsequence.newLevelNumberOfTreasures(
+      "Pintalabios negro. Pierdes dos niveles", 2, 0, 0)
+    p = Prize.new(1,1)
+    @@monstruos << Monster.new("Lolitagooth",2,bc,p,3)
   end
   
   def self.monstruos
@@ -175,8 +220,22 @@ class Cards
     
   end
   
+  def self.newCultists
+    @@cultists = Array.new
+    @@cultists << Cultist.new("Agaricus",1)
+    @@cultists << Cultist.new("Boletus",2)
+    @@cultists << Cultist.new("Daldinia",1)
+    @@cultists << Cultist.new("Bolbitius",2)
+    @@cultists << Cultist.new("Calvatia",1)
+    @@cultists << Cultist.new("Dermoloma",1)
+  end
+  
   def self.treasures
     @@treasures
+  end
+  
+  def self.cultists
+    @@cultists
   end
   
 end 

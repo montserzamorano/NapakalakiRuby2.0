@@ -12,12 +12,13 @@ class Monster
   @@contadorMonstruos = 0
   #EXAMEN
   
-  def initialize(name, level, bc, prize)
+  def initialize(name, level, bc, prize, lC=0)
     @name = name
     @combatLevel = level
     @badConsequence = bc
     @prize = prize
     @@contadorMonstruos += 1
+    @levelChangeAgainstCultistPlayer = lC
   end
   
   public 
@@ -49,6 +50,10 @@ class Monster
   
   def getPrize
     @prize
+  end
+  
+  def getCombatLevelAgainstCultistPlayer
+    getCombatLevel + @levelChangeAgainstCultistPlayer
   end
   
   #EXAMEN

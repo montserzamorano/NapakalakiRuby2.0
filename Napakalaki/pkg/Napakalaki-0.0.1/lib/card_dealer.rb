@@ -17,6 +17,7 @@ class CardDealer
     @usedMonsters = Array.new
     @unusedTreasures = Array.new
     @usedTreasures = Array.new
+    @unusedCultists = Array.new
   end
   
   def self.instance
@@ -40,12 +41,21 @@ class CardDealer
     @unusedMonsters = Cards.monstruos
   end
   
+  def initCultistCardDeck
+    Cards.newCultists
+    @unusedCultists = Card.cultists
+  end
+  
   def shuffleTreasures
     @unusedTreasures.shuffle!
   end
   
   def shuffleMonsters
     @unusedMonsters.shuffle!
+  end
+  
+  def shuffleCultist
+    @unusedCultists.shuffle!
   end
   
   public
@@ -80,6 +90,12 @@ class CardDealer
       @usedMonsters << m
       
       m
+  end
+  
+  def nextCultist
+    c = @unusedCultists[0]
+    @unusedMonsters.delete_at(0)
+    c #return
   end
   
   def giveTreasureBack(t)

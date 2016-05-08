@@ -11,7 +11,7 @@ module NapakalakiGame
 
 class Player
   
-  attr_reader :name, :level, :dead, :hiddenTreasures, :visibleTreasures
+  attr_reader :name, :level, :dead, :hiddenTreasures, :visibleTreasures, :pendingBadConsequence
   
   @@MAXLEVEL=10
   
@@ -24,14 +24,14 @@ class Player
     @pendingBadConsequence = BadConsequence.newLevelSpecificTreasures(" ", 0, Array.new, Array.new)
   end
   
-  #private
-  
-  def getCombatLevel
-    combatLevel=@level
-    @visibleTreasures.each do |v|
-      combatLevel += v.bonus
-    end
-    combatLevel
+  #constructor de copia
+  def newPlayer(p)
+    @dead = p.dead
+    @name = p.name
+    @level = p.level
+    @hiddenTreasures = p.hiddenTreasures
+    @visibleTreasures = p.visibleTreasures
+    @pendingBadConsequence = p.pendingBadConsequence
   end
   
   private
@@ -128,7 +128,7 @@ class Player
   
   def combat(m)
     myLevel = getCombatLevel
-    monsterLevel = m.getCombatLevel
+    monsterLevel = getOponentLevel(m)
     if(myLevel > monsterLevel)
       applyPrize(m)
       if(myLevel>=@@MAXLEVEL)
@@ -137,8 +137,13 @@ class Player
         combatResult=CombatResult::WIN
       end
     else
+      cultist=shouldConvert
       applyBadConsequence(m)
-      combatResult=CombatResult::LOSE
+      if(cultist)
+        combatResult=CombatResult::LOSEANDCONVERT
+      else
+        combatResult=CombatResult::LOSE
+      end
     end
     dealer = CardDealer.instance
     dealer.giveMonsterBack(m)
@@ -265,7 +270,26 @@ class Player
   
   #EXAMEN
   
+  protected
   
+    def getCombatLevel
+      combatLevel=@level
+      @visibleTreasures.each do |v|
+        combatLevel += v.bonus
+      end
+      combatLevel
+  end
+  
+    def getOponentLevel(m)
+      m.getCombatLevel
+    end
+    
+    def shouldConvert
+      dice = Dice.instance
+      return (dice.nextNumber == 6)
+    end
+    
+    
 end
 
 end
