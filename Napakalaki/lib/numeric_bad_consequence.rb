@@ -1,6 +1,7 @@
 # encoding: UTF-8
 # Autora: Minim
 
+
 module NapakalakiGame
 
 class NumericBadConsequence < BadConsequence
@@ -28,6 +29,14 @@ class NumericBadConsequence < BadConsequence
     @nHiddenTreasures-=1
     dealer = CardDealer.instance
     dealer.giveTreasureBack(t)
+  end
+  
+  def isEmpty
+    if(@nVisibleTreasures == 0 && @nHiddenTreasures == 0)
+      true
+    else
+      false
+    end
   end
   
   def adjustToFitTreasureLists(visible,hidden)

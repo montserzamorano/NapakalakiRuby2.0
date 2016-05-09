@@ -1,7 +1,5 @@
 # encoding: UTF-8
 # Autora: Minim
-require_relative 'prize.rb'
-require_relative 'bad_consequence.rb'
 
 module NapakalakiGame
 

@@ -12,7 +12,6 @@ class DeathBadConsequence < NumericBadConsequence
     DeathBadConsequence.new(@text)
   end
   
-  
   def to_s
     super
   end

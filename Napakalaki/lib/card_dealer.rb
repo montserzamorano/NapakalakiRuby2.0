@@ -1,8 +1,8 @@
 # encoding: UTF-8
 # Autora: Minim
 
+require_relative 'cultist.rb'
 require_relative 'cards.rb'
-require_relative 'treasure_kind.rb'
 
 module NapakalakiGame
 

@@ -1,12 +1,6 @@
 # encoding: UTF-8
 # Autora: Minim
 
-require_relative 'bad_consequence.rb'
-require_relative 'treasure_kind.rb'
-require_relative 'combat_result.rb'
-require_relative 'monster.rb'
-require_relative 'card_dealer.rb'
-
 module NapakalakiGame
 
 class Player
@@ -21,7 +15,7 @@ class Player
     @level = 1
     @hiddenTreasures = Array.new
     @visibleTreasures = Array.new
-    @pendingBadConsequence = BadConsequence.newLevelSpecificTreasures(" ", 0, Array.new, Array.new)
+    @pendingBadConsequence = NumericBadConsequence.new(" ", 0, Array.new, Array.new)
   end
   
   #constructor de copia
@@ -52,7 +46,7 @@ class Player
   end
   
   def setPendingBadConsequence(b)
-    @pendingBadConsequence.copiar(b)
+    @pendingBadConsequence = b #mirar
   end
   
   def applyPrize(m)

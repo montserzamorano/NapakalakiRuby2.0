@@ -14,6 +14,11 @@ class BadConsequence
   
   public
   
+  def copiar(b)
+    @text = b.getText
+    @levels = b.getLevels
+  end
+  
   def getText
     @text
   end

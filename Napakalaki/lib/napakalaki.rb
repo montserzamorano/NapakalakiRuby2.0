@@ -4,10 +4,11 @@
 require_relative 'bad_consequence.rb'
 require_relative 'prize.rb'
 require_relative 'monster.rb'
-require_relative 'treasure_kind.rb'
-require_relative 'card_dealer.rb'
 require_relative 'player.rb'
-require_relative 'dice.rb'
+require_relative 'numeric_bad_consequence.rb'
+require_relative 'death_bad_consequence.rb'
+require_relative 'specific_bad_consequence.rb'
+require_relative 'cultist_player.rb'
 
 module NapakalakiGame
 
@@ -80,6 +81,7 @@ class Napakalaki
         @currentPlayer = CultistPlayer.new(@currentPlayer, c)
         @players[@currentPlayerIndex] = @currentPlayer
       end
+      combatResult
   end
   
   def discardVisibleTreasures(treasures)
