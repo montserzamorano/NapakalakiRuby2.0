@@ -49,12 +49,20 @@ class GameTester
               puts "\n\n Ganaste el combate"
             when NapakalakiGame::CombatResult::LOSE then
               puts "\n\n Has perdido el combate, te toca cumplir el mal rollo"
+            when NapakalakiGame::CombatResult::LOSEANDCONVERT then
+              puts "\n\n Has perdido el combate, y te has convertido en sectario"
+              puts "\n No obstante, tienes que cumplir el mal rollo"
+              currentPlayer=@game.getCurrentPlayer()
            end #case
            if (combatResult != NapakalakiGame::CombatResult::WINGAME) then
             begin #Hasta que se avance de turno 
               puts "******* ******* ******* ******* ******* ******* *******"
               puts "\n\n Turno de: " + currentPlayer.to_s()
-              command = getCommandAfterFighting()
+              if currentPlayer.validState() then
+                command = getCommandAfterFighting()
+              else
+                command = getCommandAfterFightingPendingBC()
+              end
               command = processCommand(command, currentPlayer)
             end while (command != Command::Exit && command != Command::NextTurnAllowed)
           else 
@@ -72,6 +80,13 @@ class GameTester
       commands = [Command::ShowMonster, Command::ShowVisibleTreasure, Command::ShowHiddenTreasure, 
       Command::DiscardVisibleTreasure, Command::DiscardHiddenTreasure, Command::DiscardAll,
       Command::MakeTreasureVisible, Command::NextTurn, Command::Exit]
+      manageMenu("Opciones antes de pasar turno", commands)
+  end
+  
+  def getCommandAfterFightingPendingBC()
+      commands = [Command::ShowMonster, Command::ShowVisibleTreasure, Command::ShowHiddenTreasure, 
+      Command::DiscardVisibleTreasure, Command::DiscardHiddenTreasure, Command::DiscardAll,
+      Command::NextTurn, Command::Exit]
       manageMenu("Opciones antes de pasar turno", commands)
   end
   
