@@ -247,7 +247,7 @@ class Player
   
   
   def to_s
-    "#{@name.to_s}"
+    "Name #{@name.to_s} and level #{@level.to_s}"
   end
   
   #EXAMEN
@@ -257,7 +257,7 @@ class Player
     
   end
   
-    def setVisibleTreasures(tesorosVisibles)
+  def setVisibleTreasures(tesorosVisibles)
     @visibleTreasures = tesorosVisibles.clone
     
   end

@@ -11,12 +11,14 @@ module NapakalakiGame
       @@totalCultistPlayer +=1
     end
     
-    protected
-    
+    #protected
+    #es protected CUIDADO
+    public
     def getCombatLevel
       (1.5*super + @myCultistCard.getGainedLevels*@@totalCultistPlayer).to_i
     end
     
+    protected
     def self.getTotalCultistPlayer
       @@totalCultistPlayer
     end
@@ -31,9 +33,10 @@ module NapakalakiGame
       false
     end
     
+    public
     
     def to_s
-      "#{getName} (sectario) \n  Nivel = #{getLevel} \n  Nivel de combate = #{getCombatLevel} \n"
+      "Jugador sectario: " + super + "\n" + " Nivel de combate = #{getCombatLevel} \n Con carta de sectario " + @myCultistCard.to_s
     end
     
   end

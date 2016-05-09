@@ -31,6 +31,9 @@ class BadConsequence
     @@MAXTREASURES
   end
   
+  def to_s
+    "#{@text}" + "Niveles : #{@levels}"
+  end
 end
 
 end

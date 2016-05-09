@@ -9,7 +9,7 @@ class DeathBadConsequence < NumericBadConsequence
   end
   
   def adjustToFitTreasureLists(visible,hidden)
-    DeathBadConsequence.new(@text)
+    super(visible,hidden)
   end
   
   def to_s

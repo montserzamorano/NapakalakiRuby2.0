@@ -62,12 +62,6 @@ class NumericBadConsequence < BadConsequence
 
       NumericBadConsequence.new(@text,0,nVisible,nHidden)
     end
-  
-  
-  
-  
-  
-  
   #to string
   def to_s
     super + "\nTesoros visibles perdidos: #{@nVisibleTreasures} \nTesoros ocultos perdidos: #{@nHiddenTreasures}"

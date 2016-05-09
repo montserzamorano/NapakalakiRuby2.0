@@ -11,4 +11,7 @@ class Cultist
     @gainedLevels
   end
   
+  def to_s
+      "Nombre: #{@name} Niveles ganados: #{@gainedLevels}"
+  end
 end
