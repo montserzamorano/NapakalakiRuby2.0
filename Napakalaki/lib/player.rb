@@ -15,7 +15,7 @@ class Player
     @level = 1
     @hiddenTreasures = Array.new
     @visibleTreasures = Array.new
-    @pendingBadConsequence = NumericBadConsequence.new(" ", 0, Array.new, Array.new)
+    @pendingBadConsequence = NumericBadConsequence.new("",0,0,0)
   end
   
   #constructor de copia
@@ -55,10 +55,12 @@ class Player
     nTreasures = m.getTreasuresGained
     
     if(nTreasures>0)
-      dealer = CardDealer.instance
-      for i in 0...nTreasures
-        treasure = dealer.nextTreasure
-        @hiddenTreasures << treasure
+      i = 0
+ 
+      while (i < nTreasures)
+        dealer = CardDealer.instance
+        @hiddenTreasures << dealer.nextTreasure
+        i = i + 1
       end
     end
   end
@@ -125,7 +127,7 @@ class Player
     monsterLevel = getOponentLevel(m)
     if(myLevel > monsterLevel)
       applyPrize(m)
-      if(myLevel>=@@MAXLEVEL)
+      if(getLevels>=@@MAXLEVEL)
         combatResult=CombatResult::WINGAME
       else
         combatResult=CombatResult::WIN
@@ -139,8 +141,6 @@ class Player
         combatResult=CombatResult::LOSE
       end
     end
-    dealer = CardDealer.instance
-    dealer.giveMonsterBack(m)
     combatResult
   end
   
@@ -247,7 +247,7 @@ class Player
   
   
   def to_s
-    "Name #{@name.to_s} and level #{@level.to_s}"
+    "Name #{@name.to_s} de nivel #{@level.to_s} y con nivel de combate " + getCombatLevel.to_s
   end
   
   #EXAMEN
@@ -263,15 +263,15 @@ class Player
   end
   
   #EXAMEN
+  #protected
+  public
   
-  protected
-  
-    def getCombatLevel
-      combatLevel=@level
-      @visibleTreasures.each do |v|
-        combatLevel += v.bonus
-      end
-      combatLevel
+   def getCombatLevel
+    combatLevel=@level
+    @visibleTreasures.each do |v|
+      combatLevel += v.bonus
+    end
+    combatLevel
   end
   
     def getOponentLevel(m)

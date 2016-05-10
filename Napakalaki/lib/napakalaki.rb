@@ -85,23 +85,20 @@ class Napakalaki
   end
   
   def discardVisibleTreasures(treasures)
-    tesorosTam = treasures.size
-    for i in 0..tesorosTam
-      @currentPlayer.discardVisibleTreasure(treasures[i])
+    treasures.each do |t|
+      @currentPlayer.discardVisibleTreasure(t)
     end
   end
   
   def discardHiddenTreasures(treasures)
-    tesorosTam = treasures.size
-    for i in 0..tesorosTam
-      @currentPlayer.discardHiddenTreasure(treasures[i])
+    treasures.each do |t|
+      @currentPlayer.discardHiddenTreasure(t)
     end
   end
   
   def makeTreasuresVisible(treasures)
-    nSize = treasures.size
-    for i in 0...nSize
-      @currentPlayer.makeTreasureVisible(treasures[i])
+    treasures.each do |t|
+      @currentPlayer.makeTreasureVisible(t)
     end
   end
   

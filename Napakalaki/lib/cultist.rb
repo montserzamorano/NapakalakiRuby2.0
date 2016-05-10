@@ -7,6 +7,8 @@ class Cultist
     @gainedLevels = gainedLevels
   end
   
+  public 
+  
   def getGainedLevels
     @gainedLevels
   end

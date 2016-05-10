@@ -20,15 +20,15 @@ class NumericBadConsequence < BadConsequence
   end
   
   def substractVisibleTreasure(t)
-    @nVisibleTreasures-=1
-    dealer = CardDealer.instance
-    dealer.giveTreasureBack(t)
+      if (@nVisibleTreasures != 0)
+        @nVisibleTreasures = @nVisibleTreasures - 1
+      end
   end
   
-  def substractVisibleTreasure(t)
-    @nHiddenTreasures-=1
-    dealer = CardDealer.instance
-    dealer.giveTreasureBack(t)
+  def substractHiddenTreasure(t)
+      if (@nHiddenTreasures != 0)
+        @nHiddenTreasures = @nHiddenTreasures - 1
+      end
   end
   
   def isEmpty

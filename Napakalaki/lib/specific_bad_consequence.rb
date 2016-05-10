@@ -62,18 +62,12 @@ class SpecificBadConsequence < BadConsequence
     if(!@specificVisibleTreasures.empty?)
       @specificVisibleTreasures.delete(t.type)
     end
-    #devolver la carta descartada al mazo
-    dealer = CardDealer.instance
-    dealer.giveTreasureBack(t)
   end
   
   def substractHiddenTreasure(t)
     if(!@specificHiddenTreasures.empty?)
       @specificHiddenTreasures.delete(t.type)
     end
-    #devolver la carta descartada al mazo
-    dealer = CardDealer.instance
-    dealer.giveTreasureBack(t)
   end
   
   #adjust to fit

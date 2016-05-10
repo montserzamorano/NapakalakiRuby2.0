@@ -43,7 +43,7 @@ class CardDealer
   
   def initCultistCardDeck
     Cards.newCultists
-    @unusedCultists = Card.cultists
+    @unusedCultists = Cards.cultists
   end
   
   def shuffleTreasures
@@ -54,7 +54,7 @@ class CardDealer
     @unusedMonsters.shuffle!
   end
   
-  def shuffleCultist
+  def shuffleCultists
     @unusedCultists.shuffle!
   end
   
@@ -94,7 +94,7 @@ class CardDealer
   
   def nextCultist
     c = @unusedCultists[0]
-    @unusedMonsters.delete_at(0)
+    @unusedCultists.delete_at(0)
     c #return
   end
   
@@ -111,8 +111,10 @@ class CardDealer
   def initCards
     initTreasureCardDeck
     initMonsterCardDeck
+    initCultistCardDeck
     shuffleMonsters
     shuffleTreasures
+    shuffleCultists
   end
   
 end
